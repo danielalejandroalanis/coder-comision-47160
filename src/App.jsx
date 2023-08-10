@@ -1,42 +1,43 @@
-import "./App.css"
+import {useState} from 'react';
+import ButtonComponent from './components/ButtonComponent/ButtonComponent';
+import NavBarComponent from './components/NavBarComponent/NavBarComponent';
 
-//CSS Modules
-import styles from './Estilos.module.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
-// CSS-in-JS
-// const divStyles = {
-//     color: 'red',
-//     backgroundColor: 'blue',
-//     fontSize: '20px',
-//     paddingTop: '10px',
 
-//   }
+  // Se desestructura del hook useState, el primer elemento es el valor del estado, el segundo es la funcion que permite modificar el estado
+  //El primer valor, en este caso count, es el valor inicial del estado
+  const [count, setCount] = useState(0);
 
+  const incrementar = () => {
+    setCount(count + 1)
+  }
 
-  const name = 'Daniel';
+  const decrementar = () => {
+    setCount(count - 1)
+  }
 
-  var isOnline = true;
-  
-  
+  console.log(count)
 
   return (
-    // <div style={divStyles}>
-    //   Hola {name}!
-    // </div>
-    // <div style={{
-    //   color: 'red',
-    //   backgroundColor: 'blue',
-    //   fontSize: '20px',
-    //   paddingTop: '10px',
-    // }}>
-    //   Hola {name}!
-    // </div>
-    // <div className="aplicacion">
-    //   Hola {name}!
-    // </div>
-    <div className={ isOnline ? styles.online : styles.offline}>
-      Hola {name}!
+
+    <div>
+      <NavBarComponent />
+      //ItemListContainer.jsx
+      {/* <ButtonComponent label="Boton principal" bsButtonType="primary" />
+      
+      <br />
+      <ButtonComponent label="Boton secundario" bsButtonType="secondary"/>
+      <ButtonComponent label="Boton terciario" bsButtonType="outline-info"/> */}
+
+      <div>
+        <h1>Contador</h1>
+        <h2>{count}</h2>
+        <ButtonComponent label="Incrementar" bsButtonType="primary" onClickFunction={incrementar} />
+        <ButtonComponent label="Decrementar" bsButtonType="secondary" onClickFunction={decrementar}/>
+      </div>
+
     </div>
   )
 }
