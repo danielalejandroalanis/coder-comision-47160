@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from '../CartWidget/CartWidget';
 
-const NavBarComponent = () => {
+const NavBar = () => {
   return (
     <Navbar expand="lg" bg="dark" variant='dark'>
       <Container>
@@ -13,16 +13,13 @@ const NavBarComponent = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
             <NavDropdown title="Categorias" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Productos 1</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.1">Mujer</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
-                Productos 2
+               Hombres
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
+              <NavDropdown.Item href="#action/3.3">
+               Unisex
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
@@ -33,4 +30,4 @@ const NavBarComponent = () => {
   );
 }
 
-export default NavBarComponent;
+export default NavBar;
