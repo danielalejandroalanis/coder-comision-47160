@@ -6,7 +6,7 @@ import CartWidget from '../CartWidget/CartWidget';
 
 const NavBarComponent = () => {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" bg="dark" variant='dark'>
       <Container>
         <Navbar.Brand href="#home">Tienda Daniel</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
