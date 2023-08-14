@@ -2,7 +2,7 @@
 import styles from "./ItemListContainer.module.css";
 
 const ItemListContainer = ({ greeting }) => {
-  return <div className={styles.greetingStyles}>{greeting}</div>;
+  return <h1 className={styles.greetingStyles}>{greeting}</h1>;
 };
 
 export default ItemListContainer;
