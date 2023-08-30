@@ -10,7 +10,9 @@ type Products = {
 interface Propiedades {
     numero: number,
     name: string,
-    data: Array<Products>
+    data: Array<Products>,
+    clickEvent: React.MouseEvent<HTMLElement>
+
 }
 
 const ItemList: FC<Propiedades> = ({numero, name, data}) => {
