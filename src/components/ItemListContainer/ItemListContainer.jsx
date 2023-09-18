@@ -8,7 +8,6 @@ import styles from "./ItemListContainer.module.css";
 const ItemListContainer = ({ productsData }) => {
   //useNavigate nos permite navegar entre rutas dentro de nuestra aplicación
   const navigate = useNavigate();
-
   return (
     <div className={styles.productContainer}>
       {productsData.map((product) => {

@@ -1,31 +1,29 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 import ItemListContainer from "../components/ItemListContainer/ItemListContainer";
 import LoaderComponent from "../components/LoaderComponent/LoaderComponent";
 
-function getProducts() {
-  return axios.get("https://dummyjson.com/products?limit=10");
-}
+import { useProducts } from "../hooks/useProducts";
 
 const Home = () => {
+  //  const {products, loading} = useProducts();
+
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    getProducts()
-      .then((res) => {
-        setProducts(res.data.products);
-        
-      })
-      .catch((err) => {})
-      .finally(() => setLoading(false));
+    //Inicializar la base de datos
+    const db = getFirestore();
+
+    //Inicializamos la coleccion
+    const productsCollection = collection(db, "products");
+
+    //Obtener los datos de la coleccion
+    getDocs(productsCollection).then((snapshot) => {
+      setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    });
   }, []);
 
-  return loading ? (
-    <LoaderComponent />
-  ) : (
-    <ItemListContainer productsData={products} />
-  );
+  return <ItemListContainer productsData={products} />;
 };
 
 export default Home;

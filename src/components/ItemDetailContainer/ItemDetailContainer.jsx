@@ -1,10 +1,21 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
+import ItemCount from "../ItemCount/ItemCount";
 
+const ItemDetailContainer = ({ productData }) => {
+  const [stock, setStock] = React.useState(10);
+  const [onAdd, setOnAdd] = React.useState(false);
 
-const ItemDetailContainer = ({productData}) => {
+  const buttonStyles = {
+    backgroundColor: "blue",
+  };
+
+  const buttonStylesOnAdd = {
+    backgroundColor: "green",
+  };
+
   return (
     <Card style={{ width: "18rem" }}>
       <Card.Img variant="top" src={productData.thumbnail} />
@@ -17,7 +28,21 @@ const ItemDetailContainer = ({productData}) => {
         <ListGroup.Item>{productData.rating}</ListGroup.Item>
       </ListGroup>
       <Card.Body>
-        <Button>Agregar el carrito</Button>
+        <ItemCount />
+        {stock >= 5 ? (
+          <strong>Stock disponible</strong>
+        ) : (
+          <strong>Ultimas unidades disponibles!</strong>
+        )}
+        <button
+          style={onAdd ? buttonStylesOnAdd : buttonStyles}
+          onClick={() => {
+            setStock(stock - 1);
+            setOnAdd(true);
+          }}
+        >
+          Agregar
+        </button>
       </Card.Body>
     </Card>
   );
